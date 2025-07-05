@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:service_stack/screens/BottomNavPage.dart';
+import 'package:service_stack/screens/user/DashboardScreen.dart';
+import 'package:service_stack/screens/user/PaymentProcessingScreen.dart';
 
 class PaymentScreen extends StatelessWidget {
   final String qrPath = 'assets/qr_code.png';
@@ -25,7 +28,12 @@ class PaymentScreen extends StatelessWidget {
               ),
               SizedBox(height: 30),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+
+
+
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => PaymentProcessingScreen(),));
+                },
                 child: Text("Confirm Payment"),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.deepPurple,

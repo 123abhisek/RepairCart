@@ -181,7 +181,7 @@ class _DashboardScreenState extends State<AdminDashboard> {
                         trailing: const Icon(Icons.chevron_right),
                         onTap: () {
                           // Optional: Navigate to detail page or show dialog
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => ServiceDetailScreen(serviceName: service['service_name'], category: service['category'], description: service['description'], price: service['price'])));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => ServiceDetailScreen(id : service['_id'],serviceName: service['service_name'], category: service['category'], description: service['description'], price: service['price'])));
                         },
                       );
                     }).toList(),

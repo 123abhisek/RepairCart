@@ -64,6 +64,7 @@ class _AllServicesScreenState extends State<AllServicesScreen> {
                       context,
                       MaterialPageRoute(
                         builder: (context) => ServiceDetailScreen(
+                          id : service['_id'] ?? '',
                           serviceName: service['service_name'] ?? '',
                           category: service['category'] ?? '',
                           description: service['description'] ?? '',
@@ -72,6 +73,8 @@ class _AllServicesScreenState extends State<AllServicesScreen> {
                         ),
                       ),
                     );
+
+                    print('${service['_id']}, ${service['service_name']}, ${service['category']}, ${service['description']}, ${service['price']}');
 
                   },
                 ),

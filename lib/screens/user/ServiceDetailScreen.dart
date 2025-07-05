@@ -1,7 +1,12 @@
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 import 'package:flutter/material.dart';
+
+import '../../API/API_service.dart';
 // import 'package:intl/intl.dart'; // For formatting date
 
 class ServiceDetailScreen extends StatelessWidget {
+  final String id;
   final String serviceName;
   final String category;
   final String description;
@@ -9,11 +14,45 @@ class ServiceDetailScreen extends StatelessWidget {
 
   const ServiceDetailScreen({
     Key? key,
+    required this.id,
     required this.serviceName,
     required this.category,
     required this.description,
     required this.price,
   }) : super(key: key);
+
+  Future<bool> postData(String _id, int count) async {
+    API_service url = API_service();
+
+    final fullUrl = "${url.API_URL}cart/add_to_cart/";
+    print("Hitting URL: $fullUrl"); // Debug print
+
+    try {
+      final response = await http.post(
+        Uri.parse(fullUrl),
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode({
+          'service_id': _id,
+          'qty':count,
+        }),
+      );
+
+      print("Response status: ${response.statusCode}");
+      print("Response body: ${response.body}");
+
+      if (response.statusCode == 200) {
+        var responseData = jsonDecode(response.body);
+        print('Server response: $responseData');
+        return true;
+      } else {
+        print('POST failed: ${response.statusCode}');
+        return false;
+      }
+    } catch (e) {
+      print('Error occurred: $e');
+      return false;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,8 +96,7 @@ class ServiceDetailScreen extends StatelessWidget {
                     width: 400, // Adjust as needed: e.g., 80%, fixed number, etc.
                     child: ElevatedButton.icon(
                       onPressed: () {
-                        
-                      },
+                        postData(id, 1 );                     },
                       icon: const Icon(Icons.shopping_cart),
                       label: const Text("Add to Cart"),
                       style: ElevatedButton.styleFrom(

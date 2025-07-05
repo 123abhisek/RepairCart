@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:service_stack/screens/user/LoginPage.dart';
+import 'package:service_stack/screens/user/SignupPage.dart';
 
 class OwnerProfileView extends StatelessWidget {
   final String ownerName = "Ramesh Kumar";
@@ -107,7 +108,7 @@ class OwnerProfileView extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => LoginPage()),
+                    MaterialPageRoute(builder: (context) => SignupPage()),
                   );
                 },
                 icon: Icon(Icons.logout),
