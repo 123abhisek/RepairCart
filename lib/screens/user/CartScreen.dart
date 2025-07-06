@@ -92,17 +92,24 @@ class _CartPageState extends State<CartScreen> {
     final fullUrl = "${apiService.API_URL}order/place_order/";
     final uri = Uri.parse(fullUrl);
 
+    // Collect user info (this can come from user profile / form / etc.)
+    final Map<String, dynamic> orderData = {
+      "user_name": "John Doe",  // Replace with actual user name
+      "phone_number": "9876543210",  // Replace with actual phone
+      "address": "123 Main Street, City",  // Replace with actual address
+      "items": cartItems,  // Send the cart items
+    };
+
     try {
       final response = await http.post(
         uri,
         headers: {"Content-Type": "application/json"},
-        body: jsonEncode(cartItems),
+        body: jsonEncode(orderData),
       );
 
       if (response.statusCode == 201) {
         final responseData = jsonDecode(response.body);
 
-        // ✅ Clear cart items in UI
         await clearCartOnServer();
         setState(() {
           cartItems.clear();
@@ -117,7 +124,7 @@ class _CartPageState extends State<CartScreen> {
             actions: [
               TextButton(
                 onPressed: () {
-                  Navigator.pop(context); // Close dialog
+                  Navigator.pop(context);
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => PaymentScreen()),
@@ -160,6 +167,7 @@ class _CartPageState extends State<CartScreen> {
       );
     }
   }
+
 
   Future<void> clearCartOnServer() async {
     API_service apiService = API_service();

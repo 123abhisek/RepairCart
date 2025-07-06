@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import '../../API/API_service.dart';
-import '../user/ServiceDetailScreen.dart';
+import 'AdminServiceDetailScreen.dart';
+
 
 class AdminAllServicesScreen extends StatefulWidget {
   @override
@@ -286,7 +287,7 @@ class _AllServicesScreenState extends State<AdminAllServicesScreen>
                 context,
                 PageRouteBuilder(
                   transitionDuration: Duration(milliseconds: 600),
-                  pageBuilder: (_, __, ___) => ServiceDetailScreen(
+                  pageBuilder: (_, __, ___) => AdminServiceDetailScreen(
                     id: service['_id'] ?? '',
                     serviceName: service['service_name'] ?? '',
                     category: service['category'] ?? '',

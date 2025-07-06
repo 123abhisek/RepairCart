@@ -106,9 +106,9 @@ class OwnerProfileView extends StatelessWidget {
               constraints: BoxConstraints(minWidth: 600), // Set desired width
               child: ElevatedButton.icon(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => SignupPage()),
+                  Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(builder: (context) => LoginPage()),
+                        (route) => false,
                   );
                 },
                 icon: Icon(Icons.logout),

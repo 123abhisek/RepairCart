@@ -9,14 +9,16 @@ class PaymentScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Payment'), backgroundColor: Colors.deepPurple),
+      appBar:
+          AppBar(title: Text('Payment'), backgroundColor: Colors.deepPurple),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(24.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("Scan to Pay", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              Text("Scan to Pay",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
               SizedBox(height: 20),
               Container(
                 padding: EdgeInsets.all(10),
@@ -29,10 +31,11 @@ class PaymentScreen extends StatelessWidget {
               SizedBox(height: 30),
               ElevatedButton(
                 onPressed: () {
-
-
-
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PaymentProcessingScreen(),));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PaymentProcessingScreen(),
+                      ));
                 },
                 child: Text("Confirm Payment"),
                 style: ElevatedButton.styleFrom(

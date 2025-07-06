@@ -96,7 +96,9 @@ class ServiceDetailScreen extends StatelessWidget {
                     width: 400, // Adjust as needed: e.g., 80%, fixed number, etc.
                     child: ElevatedButton.icon(
                       onPressed: () {
-                        postData(id, 1 );                     },
+                        postData(id, 1 );
+                        Navigator.pop(context);
+                        },
                       icon: const Icon(Icons.shopping_cart),
                       label: const Text("Add to Cart"),
                       style: ElevatedButton.styleFrom(
